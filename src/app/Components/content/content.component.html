@@ -1,0 +1,64 @@
+   
+<style>
+    .h{
+        border: 2px solid black;
+        color: red;
+    }
+    form {
+        display: grid;
+        row-gap: 0.5rem;
+        border: 2px solid black;
+        padding: 3rem;
+        border-radius: 1rem;
+    }
+    form div {
+        display: grid;
+        grid-template-columns: 0.5fr 1fr;
+        height: 2rem;
+    }
+    label {
+        font-weight: bold;
+    }
+    .submit {
+        grid-column: 2;
+    }
+    form div input {
+        font-size: medium;
+        color:gray;
+        border:1.5px solid black;
+    }
+    button {
+        background-color: black;
+        color:#fff;
+    }
+    button:hover {
+        box-shadow: 0 3px 2px rgba(0,0,0,0.25);
+    }
+    button:disabled,
+    button[disabled]{
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+      cursor: not-allowed;
+    }
+    </style>
+    <div>
+        <h3 class="h rounded2 m2 p2">Product Details</h3>
+        <form #product="ngForm" class="">
+            <div class="">
+                <label for="brand">Brand</label><input #brand="ngModel" [(ngModel)]="productData.brand" class="rounded2 p1" [class.invalid]="brand.invalid && brand.touched" id="brand" type='text' name='brand' placeholder='brand' required />
+            </div>
+            <div class="">
+                <label for="model">Model</label><input #model="ngModel" [(ngModel)]="productData.model" class="rounded2 p1" [class.invalid]="model.invalid && model.touched" id="model" type='text' name='model' placeholder='model' required />
+            </div>
+            <div class="">
+                <label for="price">Price</label><input #price="ngModel" [(ngModel)]="productData.price" class="rounded2 p1" [class.invalid]="price.invalid && price.touched" id="price" type='number' name='price' placeholder='price' required />
+            </div>
+            <div class="">
+                <label for="speed">Speed</label><input #speed="ngModel" [(ngModel)]="productData.speed" class="rounded2 p1" [class.invalid]="speed.invalid && speed.touched" id="speed" type='number' name='speed' placeholder='speed' required />
+            </div>
+            <div class="">
+                <button class="btn rounded2 p1 submit" type="submit" [disabled]="!(product.form.valid)">Submit</button>
+            </div>
+        </form>
+    </div>

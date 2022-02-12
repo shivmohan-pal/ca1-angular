@@ -1,0 +1,52 @@
+<style>
+    form {
+        display: grid;
+        row-gap: 0.5rem;
+        border: 2px solid black;
+        padding: 3rem;
+        border-radius: 1rem;
+    }
+    form div {
+        display: grid;
+        grid-template-columns: 0.5fr 1fr;
+        height: 2rem;
+    }
+    label {
+        font-weight: bold;
+    }
+    .submit {
+        grid-column: 2;
+    }
+    form div input {
+        font-size: medium;
+        color:gray;
+        border:1.5px solid black;
+    }
+    button {
+        background-color: black;
+        color:#fff;
+    }
+    button:hover {
+        box-shadow: 0 3px 2px rgba(0,0,0,0.25);
+    }
+    button:disabled,
+    button[disabled]{
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+      cursor: not-allowed;
+    }
+    </style>
+    <div>
+        <form class="" #loginForm="ngForm">
+            <div class="">
+                <label for="username">User Name</label><input #username="ngModel" [(ngModel)]="user.username" [class.invalid]="username.invalid && username.touched" class="rounded2 p1" id="username" type='text' name='username' placeholder='username' required/>
+            </div>
+            <div class="">
+                <label for="password">Password</label><input #pass="ngModel" [(ngModel)]="user.pass" [class.invalid]="pass.invalid && pass.touched" class="rounded2 p1" id="password" type='password' name='pass' placeholder='password' required/>
+            </div>
+            <div class="">
+                <button class="btn rounded2 p1 submit" type="submit" [disabled]="!(loginForm.form.valid)">Submit</button>
+            </div>
+        </form>
+    </div>
